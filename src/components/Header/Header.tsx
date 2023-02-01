@@ -9,18 +9,18 @@ const Header = () => {
     setSection(e.target.value as SectionType);
 
   return (
-    <header className="w-full max-w-sm flex justify-between items-center h-11 p-2">
+    <header className="w-full max-w-sm flex justify-between items-center h-11 px-2 py-2">
       <MantraWord />
-      {/* <select
+      <select
         name="sections"
         id="sections"
-        className="border-r-8 border border-transparent px-2 h-full rounded text-lg cursor-pointer"
+        className="ml-2 border-r-8 border border-transparent px-2 h-full rounded text-lg cursor-pointer"
         onChange={handleSelect}
       >
         <option value="journals">Journals</option>
         <option value="tables">Tables</option>
         <option value="systems">Systems</option>
-      </select> */}
+      </select>
     </header>
   );
 };

@@ -11,13 +11,14 @@ const MantraWord = () => {
     handleChange,
     handleFocus,
     handleUnfocus,
+    handleClick,
     mantra,
   } = useMantraWord();
 
   return (
     <>
       {selected ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="overflow-auto scrollbar-none">
           <AutosizeInput
             autoFocus
             ref={inputRef as AutoSizeInputType}
@@ -29,11 +30,18 @@ const MantraWord = () => {
             inputStyle={{
               fontWeight: 600,
               fontSize: 20,
+              paddingLeft: "4px",
+              paddingRight: "4px",
             }}
           />
         </form>
       ) : (
-        <h1 className="text-xl font-semibold">{mantra}</h1>
+        <button
+          onClick={handleClick}
+          className="text-xl px-1 font-semibold truncate"
+        >
+          {mantra}
+        </button>
       )}
     </>
   );

@@ -1,6 +1,5 @@
 import { useAtom } from "jotai";
 import React, { useRef, useState } from "react";
-import { useHotkeys } from "react-hotkeys-hook";
 import { mantraAtom } from "../../store";
 
 const useMantraWord = () => {
@@ -10,11 +9,6 @@ const useMantraWord = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useHotkeys("ctrl+m", () => setSelected(true));
-  useHotkeys(";", () => inputRef.current?.blur(), {
-    enableOnFormTags: true,
-  });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
 
@@ -23,9 +17,11 @@ const useMantraWord = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setMantra(value);
+    setMantra(value.replace(/\s+/g, " ").trim());
     inputRef.current?.blur();
   };
+
+  const handleClick = () => setSelected(true);
   return {
     selected,
     handleSubmit,
@@ -34,6 +30,7 @@ const useMantraWord = () => {
     handleChange,
     handleFocus,
     handleUnfocus,
+    handleClick,
     mantra,
   };
 };
