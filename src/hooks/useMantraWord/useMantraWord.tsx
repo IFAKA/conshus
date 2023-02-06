@@ -17,8 +17,10 @@ const useMantraWord = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setMantra(value.replace(/\s+/g, " ").trim());
-    inputRef.current?.blur();
+    if (value.trim()) {
+      setMantra(value.replace(/\s+/g, " ").trim());
+      inputRef.current?.blur();
+    }
   };
 
   const handleClick = () => setSelected(true);

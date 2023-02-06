@@ -1,4 +1,4 @@
 import { atomWithStorage } from "jotai/utils";
-import { INote } from "../models";
+import { IJournal } from "../models";
 
-export const journalsAtom = atomWithStorage("notes", [] as INote[]);
+export const journalsAtom = atomWithStorage("notes", [] as IJournal[]);

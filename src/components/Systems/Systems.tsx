@@ -1,22 +1,22 @@
 import { useAtom } from "jotai";
-import { systemsAtom } from "../../store";
-import SystemsInput from "../SystemsInput/SystemsInput";
+import { systemsAtom, textAreaAtom } from "../../store";
+import SystemList from "../SystemList/SystemList";
+import TextArea from "../TextArea/TextArea";
 
 const Systems = () => {
-  const [systems] = useAtom(systemsAtom);
+  const [value] = useAtom(textAreaAtom);
+  const [systems, setSystems] = useAtom(systemsAtom);
+
+  const addSystem = () => {
+    if (!systems.some((system) => system.text === value.trim())) {
+      setSystems((crr) => [...crr, { days: [], text: value.trim() }]);
+    }
+  };
+
   return (
     <>
-      <ul className="flex-1 flex flex-col px-2 scrollbar-thin scrollbar-w-1 scrollbar-thumb-rounded-md scrollbar-track-neutral-800 scrollbar-thumb-neutral-700">
-        {systems.map(({ text }, i) => (
-          <li key={text}>
-            <p className="truncate">
-              <span className="text-md">{i}. </span>
-              <span className="text-xl">{text}</span>
-            </p>
-          </li>
-        ))}
-      </ul>
-      <SystemsInput />
+      <SystemList />
+      <TextArea placeholder="System" onSubmit={addSystem} />
     </>
   );
 };
