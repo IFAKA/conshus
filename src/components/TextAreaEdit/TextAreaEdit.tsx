@@ -40,7 +40,7 @@ const TextAreaEdit = ({ onSubmit }: { onSubmit: (value: string) => void }) => {
       role="textbox"
       contentEditable
       suppressContentEditableWarning
-      className="hover:bg-neutral-700 bg-neutral-800 mt-1 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] rounded-xl resize-none scrollbar-none"
+      className="hover:bg-neutral-200 dark:hover:bg-neutral-700 bg-neutral-200 dark:bg-neutral-800 mt-1 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] rounded-xl resize-none scrollbar-none"
       ref={textAreaRef}
       onKeyDown={handleKeyPress}
       onBlur={handleBlur}

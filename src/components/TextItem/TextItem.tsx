@@ -34,7 +34,7 @@ const TextItem = ({
       tabIndex={0}
       ref={focusRef}
       onFocus={handleFocus}
-      className="hover:bg-neutral-700 hover:cursor-pointer bg-neutral-800 mt-1 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] rounded-xl"
+      className="hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer dark:bg-neutral-800 bg-neutral-200 mt-1 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] rounded-xl"
     >
       <span>{text}</span>
       {cursor === i ? (

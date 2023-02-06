@@ -23,7 +23,7 @@ const CopyButton = ({ text }: { text: string }) => {
           <Check />
         </span>
       ) : (
-        <button className="mr-2" onClick={handleCopy}>
+        <button className="mr-2 bg-transparent" onClick={handleCopy}>
           <Copy />
         </button>
       )}

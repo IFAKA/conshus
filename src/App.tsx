@@ -13,7 +13,7 @@ function App() {
   const [section] = useAtom(sectionAtom);
   return (
     <div className="w-full flex justify-center">
-      <div className="w-full max-w-sm flex flex-col h-screen border border-neutral-800 bg-black">
+      <div className="w-full max-w-md flex flex-col h-screen border border-neutral-400 dark:border-neutral-800 dark:bg-black">
         <Header />
 
         {section === "journals" ? (
@@ -22,6 +22,9 @@ function App() {
           <Tables />
         ) : section === "systems" ? (
           <Systems />
+        ) : section === "trackers" ? (
+          // make it work as you expect
+          <Trackers />
         ) : section === "budget" ? (
           <Budget />
         ) : null}

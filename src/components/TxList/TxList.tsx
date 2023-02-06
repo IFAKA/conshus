@@ -22,7 +22,7 @@ const TxList = () => {
   };
 
   return (
-    <ul className="flex-1 flex border-neutral-800 flex-col-reverse items-end px-2 overflow-auto scrollbar-thin scrollbar-w-1 scrollbar-thumb-rounded-md scrollbar-track-neutral-800 scrollbar-thumb-neutral-700">
+    <ul className="flex-1 flex border-neutral-800 flex-col-reverse items-end px-2 overflow-auto scrollbar-thin scrollbar-w-1 scrollbar-thumb-rounded-md dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-neutral-300">
       <ScrollToEnd listenTo={budget} />
       {budget.map(({ text }, i) => (
         <div key={text}>

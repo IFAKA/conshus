@@ -5,7 +5,7 @@ import { inputSelectedAtom, textAreaAtom } from "../../store";
 const ScrollToEnd = <T,>({ listenTo }: { listenTo: T[] }) => {
   const [value] = useAtom(textAreaAtom);
   const [inputSelected] = useAtom(inputSelectedAtom);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     if (inputSelected && !value) {
@@ -18,7 +18,7 @@ const ScrollToEnd = <T,>({ listenTo }: { listenTo: T[] }) => {
     }
   }, [listenTo, inputSelected]);
 
-  return <div ref={scrollRef} />;
+  return <li ref={scrollRef} />;
 };
 
 export default ScrollToEnd;

@@ -10,7 +10,7 @@ const Header = () => {
     setSection(e.target.value as SectionType);
 
   return (
-    <header className="w-full max-w-sm flex justify-between items-center h-11 px-2 py-2">
+    <header className="w-full max-w-md flex justify-between items-center h-11 px-2 py-2">
       <MantraWord />
       <select
         value={section}

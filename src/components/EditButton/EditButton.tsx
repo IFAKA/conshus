@@ -9,7 +9,7 @@ const EditButton = ({ text }: { text: string }) => {
     setEditable(text);
 
   return (
-    <button className="mr-2" onClick={handleEdit}>
+    <button className="mr-2 bg-transparent" onClick={handleEdit}>
       <PencilSimple />
     </button>
   );

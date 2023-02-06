@@ -69,7 +69,7 @@ const TotalMoneyTable = () => {
         value={total}
         onClick={handleCopy}
         disabled={!!copied}
-        className="flex mx-2 mb-2 items-center hover:bg-neutral-700 hover:cursor-pointer bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] rounded-xl"
+        className="flex mx-2 mb-2 items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] rounded-xl"
       >
         {copied === "total" ? (
           <>
@@ -83,14 +83,14 @@ const TotalMoneyTable = () => {
           </>
         )}
       </button>
-      <div className="grid grid-cols-4 mx-2 rounded-xl bg-neutral-800 overflow-hidden mb-2">
+      <div className="grid grid-cols-4 mx-2 rounded-xl overflow-hidden mb-2">
         {months.map(({ name, total }, i) => (
           <button
             name={name}
             value={total}
             onClick={handleCopy}
             disabled={!!copied}
-            className={`hover:disabled:cursor-default text-base display flex justify-center items-center flex-wrap py-1 hover:cursor-pointer hover:bg-neutral-600`}
+            className={`bg-neutral-200 dark:bg-neutral-800 hover:disabled:cursor-default text-base display flex justify-center items-center flex-wrap py-1 hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-600`}
             key={name}
           >
             {copied === name ? (

@@ -5,7 +5,7 @@ const somthingMissing = (i: number) => i % 2 === 0;
 const YearGrid = () => {
   return (
     <>
-      <div className="mx-2 mb-2 p-0.5 display flex justify-center items-center flex-wrap rounded hover:cursor-pointer hover:bg-neutral-600 bg-neutral-800">
+      <div className="mx-2 mb-2 p-0.5 display flex justify-center items-center flex-wrap rounded hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-600 bg-neutral-200 dark:bg-neutral-800">
         {days.map((day) => (
           <div
             key={day}
@@ -14,8 +14,8 @@ const YearGrid = () => {
             <div
               className={`p-[3px] rounded-full w-full ${
                 allDone(day)
-                  ? "bg-neutral-100"
-                  : somthingMissing(day) && "bg-neutral-500"
+                  ? "bg-neutral-700 dark:bg-neutral-100"
+                  : somthingMissing(day) && "bg-neutral-500 dark:bg-neutral-500"
               }`}
             ></div>
           </div>

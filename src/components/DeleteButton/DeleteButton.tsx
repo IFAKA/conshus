@@ -19,7 +19,7 @@ const DeleteButton = ({ onClick }: { onClick: () => void }) => {
     setCursor(-1);
   };
   return (
-    <button onClick={handleClick}>
+    <button onClick={handleClick} className="bg-transparent">
       <Trash />
     </button>
   );
