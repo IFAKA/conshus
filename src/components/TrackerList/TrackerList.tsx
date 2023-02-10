@@ -1,9 +1,9 @@
 import { useAtom } from "jotai";
 import { TODAY } from "../../constants";
 import { cursorAtom, daysAtom, editableAtom } from "../../store";
-import ScrollToEnd from "../ScrollToEnd/ScrollToEnd";
-import TextAreaEdit from "../TextAreaEdit/TextAreaEdit";
-import TextItem from "../TextItem/TextItem";
+import { TextAreaEdit } from "../TextAreaEdit";
+import { TextItem } from "../TextItem";
+import { ScrollToEnd } from "../ScrollToEnd";
 
 const TrackerList = () => {
   const [days, setDays] = useAtom(daysAtom);

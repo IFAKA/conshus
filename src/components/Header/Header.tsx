@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { SectionType } from "../../models";
 import { sectionAtom } from "../../store";
-import MantraWord from "../MantraWord/MantraWord";
+import { MantraWord } from "../MantraWord";
 
 const Header = () => {
   const [section, setSection] = useAtom(sectionAtom);

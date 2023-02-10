@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import { budgetAtom, cursorAtom, editableAtom } from "../../store";
-import ScrollToEnd from "../ScrollToEnd/ScrollToEnd";
-import TextAreaEdit from "../TextAreaEdit/TextAreaEdit";
-import TextItem from "../TextItem/TextItem";
+import { ScrollToEnd } from "../ScrollToEnd";
+import { TextAreaEdit } from "../TextAreaEdit";
+import { TextItem } from "../TextItem";
 
 const TxList = () => {
   const [budget, setBudget] = useAtom(budgetAtom);

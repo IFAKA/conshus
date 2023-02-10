@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import { cursorAtom, editableAtom, journalsAtom } from "../../store";
-import ScrollToEnd from "../ScrollToEnd/ScrollToEnd";
-import TextAreaEdit from "../TextAreaEdit/TextAreaEdit";
-import TextItem from "../TextItem/TextItem";
+import { ScrollToEnd } from "../ScrollToEnd";
+import { TextAreaEdit } from "../TextAreaEdit";
+import { TextItem } from "../TextItem";
 
 const JournalList = () => {
   const [journals, setJournals] = useAtom(journalsAtom);

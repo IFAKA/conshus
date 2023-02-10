@@ -1,9 +1,9 @@
 import { useAtom } from "jotai";
 import { TODAY } from "../../constants";
 import { daysAtom, textAreaAtom } from "../../store";
-import TextArea from "../TextArea/TextArea";
-import TrackerList from "../TrackerList/TrackerList";
-import YearGrid from "../YearGrid/YearGrid";
+import { YearGrid } from "../YearGrid";
+import { TrackerList } from "../TrackerList";
+import { TextArea } from "../TextArea";
 
 const Trackers = () => {
   const [value] = useAtom(textAreaAtom);

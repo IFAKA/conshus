@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import { cursorAtom, editableAtom, tablesAtom } from "../../store";
-import ScrollToEnd from "../ScrollToEnd/ScrollToEnd";
-import TextAreaEdit from "../TextAreaEdit/TextAreaEdit";
-import TextItem from "../TextItem/TextItem";
+import { TextAreaEdit } from "../TextAreaEdit";
+import { TextItem } from "../TextItem";
+import { ScrollToEnd } from "../ScrollToEnd";
 
 const TableList = () => {
   const [tables, setTables] = useAtom(tablesAtom);

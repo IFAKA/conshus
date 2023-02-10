@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { tablesAtom, textAreaAtom } from "../../store";
-import TableList from "../TableList/TableList";
-import TextArea from "../TextArea/TextArea";
+import { TextArea } from "../TextArea";
+import { TableList } from "../TableList";
 
 const Tables = () => {
   const [value] = useAtom(textAreaAtom);

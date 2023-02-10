@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useClickOutside } from "../../hooks";
 import { cursorAtom, sectionAtom } from "../../store";
-import CheckButton from "../CheckButton/CheckButton";
-import CopyButton from "../CopyButton/CopyButton";
-import DeleteButton from "../DeleteButton/DeleteButton";
-import EditButton from "../EditButton/EditButton";
+import { CheckButton } from "../CheckButton";
+import { CopyButton } from "../CopyButton";
+import { DeleteButton } from "../DeleteButton";
+import { EditButton } from "../EditButton";
 
 const TextItem = ({
   i,

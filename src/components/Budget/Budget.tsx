@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import { budgetAtom, textAreaAtom } from "../../store";
-import TextArea from "../TextArea/TextArea";
-import TotalMoneyTable from "../TotalMoneyTable/TotalMoneyTable";
-import TxList from "../TxList/TxList";
+import { TotalMoneyTable } from "../TotalMoneyTable";
+import { TxList } from "../TxList";
+import { TextArea } from "../TextArea";
 
 const Budget = () => {
   const [value] = useAtom(textAreaAtom);

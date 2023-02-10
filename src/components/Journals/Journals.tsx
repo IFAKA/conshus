@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { journalsAtom, textAreaAtom } from "../../store";
-import JournalList from "../JournalList/JournalList";
-import TextArea from "../TextArea/TextArea";
+import { JournalList } from "../JournalList";
+import { TextArea } from "../TextArea";
 
 const Journals = () => {
   const [value] = useAtom(textAreaAtom);
