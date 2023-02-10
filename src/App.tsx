@@ -1,5 +1,6 @@
 import { useAtom } from "jotai";
-import { Budget, Flow, Header, Journals, Tables, Trackers } from "./components";
+import { Header } from "./components";
+import { Budget, Flow, Journals, Tables, Trackers } from "./pages";
 import { sectionAtom } from "./store";
 
 function App() {
