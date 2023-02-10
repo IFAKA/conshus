@@ -4,7 +4,7 @@ import AutosizeInput from "react-input-autosize";
 export type SectionType =
   | "journals"
   | "tables"
-  | "systems"
+  | "flow"
   | "trackers"
   | "budget";
 export type AutoSizeInputType = RefObject<AutosizeInput> &

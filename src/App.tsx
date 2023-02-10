@@ -1,12 +1,5 @@
 import { useAtom } from "jotai";
-import {
-  Budget,
-  Header,
-  Journals,
-  Systems,
-  Tables,
-  Trackers,
-} from "./components";
+import { Budget, Flow, Header, Journals, Tables, Trackers } from "./components";
 import { sectionAtom } from "./store";
 
 function App() {
@@ -20,8 +13,8 @@ function App() {
           <Journals />
         ) : section === "tables" ? (
           <Tables />
-        ) : section === "systems" ? (
-          <Systems />
+        ) : section === "flow" ? (
+          <Flow />
         ) : section === "trackers" ? (
           <Trackers />
         ) : section === "budget" ? (
