@@ -20,8 +20,9 @@ const Header = () => {
         onChange={handleSelect}
       >
         <option value="journals">Journals</option>
-        <option value="systems">Systems</option>
         <option value="tables">Tables</option>
+        <option value="systems">Flow</option>
+        <option value="trackers">Trackers</option>
         <option value="budget">Budget</option>
       </select>
     </header>

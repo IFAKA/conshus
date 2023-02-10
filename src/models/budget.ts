@@ -13,6 +13,6 @@ export type MonthType =
   | "Dec";
 
 export interface ITx {
-  date: MonthType;
+  date: { month: string; year: string };
   text: string;
 }

@@ -1,18 +1,35 @@
 import { useAtom } from "jotai";
-import { systemsAtom, textAreaAtom, trackersAtom } from "../../store";
+import { TODAY } from "../../constants";
+import { daysAtom, textAreaAtom } from "../../store";
 import TextArea from "../TextArea/TextArea";
 import TrackerList from "../TrackerList/TrackerList";
 import YearGrid from "../YearGrid/YearGrid";
 
 const Trackers = () => {
   const [value] = useAtom(textAreaAtom);
-  const [trackers, setTrackers] = useAtom(trackersAtom);
+  const [days, setDays] = useAtom(daysAtom);
 
   const addItem = () => {
-    if (!trackers.some((tracker) => tracker.text === value.trim())) {
-      setTrackers((crr) => [...crr, { days: [], text: value.trim() }]);
+    const isRepeated = !days.some((day) =>
+      day.systems.some((system) => system.text === value.trim())
+    );
+
+    if (isRepeated) {
+      let newDays = [...days];
+      const idx = newDays.findIndex(
+        (day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`)
+      );
+      newDays[idx] = {
+        date: newDays[idx].date,
+        systems: [
+          ...newDays[idx].systems,
+          { checked: false, text: value.trim() },
+        ],
+      };
+      setDays(newDays);
     }
   };
+
   return (
     <>
       <YearGrid />

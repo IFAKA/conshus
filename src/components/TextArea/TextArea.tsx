@@ -42,7 +42,7 @@ const TextArea = ({
 
   return (
     <div className="p-2">
-      <label className="py-2 w-full flex items-center rounded-t-[22px] rounded-b-[22px] dark:bg-neutral-700 border border-neutral-400 dark:border-none shadow-lg">
+      <label className="py-2 w-full flex items-center rounded-t-[22px] rounded-b-[22px] dark:bg-neutral-700 border-2 border-neutral-400 dark:border-none shadow-lg">
         <textarea
           autoFocus={!!value}
           onChange={handleChange}

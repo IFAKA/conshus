@@ -1,4 +1,5 @@
 export { default as Budget } from "./Budget/Budget";
+export { default as CheckButton } from "./CheckButton/CheckButton";
 export { default as CopyButton } from "./CopyButton/CopyButton";
 export { default as DeleteButton } from "./DeleteButton/DeleteButton";
 export { default as EditButton } from "./EditButton/EditButton";
