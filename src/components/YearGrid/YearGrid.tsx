@@ -9,7 +9,7 @@ const YearGrid = () => {
 
   useEffect(() => {
     if (Date.parse(`${TODAY}`) === Date.parse(`${tomorrow}`)) {
-      setTomorrow(new Date(tomorrow.getTime() + 1 * 86400000));
+      setTomorrow(new Date(new Date(tomorrow).getTime() + 1 * 86400000));
       let newDays = [...days];
       const idx = days.findIndex(
         (day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`)

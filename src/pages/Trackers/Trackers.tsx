@@ -1,38 +1,18 @@
-import { TextArea, TrackerList, YearGrid } from "@/components";
-import { useAtom } from "jotai";
-import { TODAY } from "../../constants";
-import { daysAtom, textAreaAtom } from "../../store";
+import { List, TextArea, YearGrid } from "@/components";
+import { useTrackers } from "@/hooks";
 
 const Trackers = () => {
-  const [value] = useAtom(textAreaAtom);
-  const [days, setDays] = useAtom(daysAtom);
-
-  const addItem = () => {
-    const isRepeated = !days.some((day) =>
-      day.systems.some((system) => system.text === value.trim())
-    );
-
-    if (isRepeated) {
-      let newDays = [...days];
-      const idx = newDays.findIndex(
-        (day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`)
-      );
-      newDays[idx] = {
-        date: newDays[idx].date,
-        systems: [
-          ...newDays[idx].systems,
-          { checked: false, text: value.trim() },
-        ],
-      };
-      setDays(newDays);
-    }
-  };
-
+  const { systems, deleteSystem, updateSystem, addSystem } = useTrackers();
   return (
     <>
       <YearGrid />
-      <TrackerList />
-      <TextArea placeholder={"Habit"} onSubmit={addItem} />
+      <List
+        items={systems}
+        position="top-left"
+        onDelete={deleteSystem}
+        onUpdate={updateSystem}
+      />
+      <TextArea placeholder={"Habit"} onSubmit={addSystem} />
     </>
   );
 };

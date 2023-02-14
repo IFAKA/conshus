@@ -1,12 +1,20 @@
+import { cursorAtom } from "@/store";
+import { useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
-const useClickOutside = (callback: () => void) => {
+const useClickOutside = (id: string | number, cb?: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [cursor, setCursor] = useAtom(cursorAtom);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        callback();
+      if (
+        cursor === id &&
+        ref.current &&
+        !ref.current.contains(e.target as Node)
+      ) {
+        setCursor(-1);
+        cb && cb();
       }
     };
 
@@ -15,7 +23,7 @@ const useClickOutside = (callback: () => void) => {
     return () => {
       document.removeEventListener("click", handleClick, true);
     };
-  }, [ref]);
+  }, [ref, cursor]);
 
   return ref;
 };

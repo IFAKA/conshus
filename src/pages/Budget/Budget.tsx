@@ -1,32 +1,18 @@
-import { TextArea, TotalMoneyTable, TxList } from "@/components";
-import { useAtom } from "jotai";
-import { budgetAtom, textAreaAtom } from "../../store";
+import { List, TextArea, TotalMoneyTable } from "@/components";
+import { useBudget } from "@/hooks";
 
 const Budget = () => {
-  const [value] = useAtom(textAreaAtom);
-  const [, setBudget] = useAtom(budgetAtom);
-
-  const addItem = () =>
-    setBudget((crr) => [
-      {
-        date: {
-          month: new Date().toLocaleString("en-US", {
-            month: "short",
-          }),
-          year: new Date().toLocaleString("en-US", {
-            year: "numeric",
-          }),
-        },
-        text: value.trim(),
-      },
-      ...crr,
-    ]);
-
+  const { budget, deleteTx, updateTx, addTx } = useBudget();
   return (
     <>
       <TotalMoneyTable />
-      <TxList />
-      <TextArea placeholder={"Transaction"} onSubmit={addItem} />
+      <List
+        items={budget}
+        position="bottom-right"
+        onDelete={deleteTx}
+        onUpdate={updateTx}
+      />
+      <TextArea placeholder={"Transaction"} onSubmit={addTx} />
     </>
   );
 };

@@ -1,7 +1,5 @@
-import { useAtom } from "jotai";
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
 import { useAutoSizeTextArea } from "../../hooks";
-import { inputSelectedAtom, refAtom, textAreaAtom } from "../../store";
 import { firstCharUpper } from "../../utils";
 
 const TextArea = ({
@@ -9,36 +7,24 @@ const TextArea = ({
   onSubmit,
 }: {
   placeholder: string;
-  onSubmit: () => void;
+  onSubmit: (value: string) => void;
 }) => {
-  const [value, setValue] = useAtom(textAreaAtom);
-  const [, setInputSelected] = useAtom(inputSelectedAtom);
-  const [, setRef] = useAtom(refAtom);
+  const [value, setValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setValue(e.target.value);
 
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  useAutoSizeTextArea(textAreaRef.current, value, 6);
+  const ref = useRef<HTMLTextAreaElement>(null);
+  useAutoSizeTextArea(ref.current, value, 6);
   const onKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (!e.shiftKey && e.key === "Enter") {
       e.preventDefault();
       if (value.trim()) {
-        onSubmit();
+        onSubmit(firstCharUpper(value.trim()));
         setValue("");
       }
     }
   };
-
-  const handleFocus = () => setInputSelected(true);
-  const handleBlur = () => {
-    setValue("");
-    setInputSelected(false);
-  };
-
-  useEffect(() => {
-    setRef(textAreaRef);
-  }, []);
 
   return (
     <div className="p-2">
@@ -47,10 +33,8 @@ const TextArea = ({
           autoFocus={!!value}
           onChange={handleChange}
           value={firstCharUpper(value)}
-          ref={textAreaRef}
+          ref={ref}
           onKeyDown={onKeyPress}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
           placeholder={placeholder}
           rows={1}
           className="px-4 text-lg resize-none w-full scrollbar-none bg-transparent focus-visible:outline-none focus:outline-none"

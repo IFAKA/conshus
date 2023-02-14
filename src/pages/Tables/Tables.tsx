@@ -1,20 +1,16 @@
-import { useAtom } from "jotai";
-import { tablesAtom, textAreaAtom } from "../../store";
-import { TableList, TextArea } from "@/components";
+import { List, TextArea } from "@/components";
+import { useTables } from "@/hooks";
 
 const Tables = () => {
-  const [value] = useAtom(textAreaAtom);
-  const [tables, setTables] = useAtom(tablesAtom);
-
-  const addTable = () => {
-    if (!tables.some((table) => table.text === value.trim())) {
-      setTables((crr) => [...crr, { items: [], text: value.trim() }]);
-    }
-  };
-
+  const { tables, deleteTable, updateTable, addTable } = useTables();
   return (
     <>
-      <TableList />
+      <List
+        items={tables}
+        position="top-left"
+        onDelete={deleteTable}
+        onUpdate={updateTable}
+      />
       <TextArea placeholder="Table" onSubmit={addTable} />
     </>
   );
