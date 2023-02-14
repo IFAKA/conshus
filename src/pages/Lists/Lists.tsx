@@ -1,7 +1,7 @@
 import { List, TextArea } from "@/components";
 import { useTables } from "@/hooks";
 
-const Tables = () => {
+const Lists = () => {
   const { tables, deleteTable, updateTable, addTable } = useTables();
   return (
     <>
@@ -16,4 +16,4 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default Lists;

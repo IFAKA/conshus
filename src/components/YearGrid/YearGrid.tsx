@@ -35,10 +35,10 @@ const YearGrid = () => {
           className={`sm:p-[5px] p-1 m-[1px] ${
             day.systems.length > 0 &&
             day.systems.every((system) => system.checked === true)
-              ? "bg-neutral-500 dark:bg-neutral-300"
+              ? "bg-neutral-700 dark:bg-neutral-300"
               : day.systems.every((system) => system.checked === false)
               ? "bg-neutral-300 dark:bg-neutral-800"
-              : "bg-neutral-700 dark:bg-neutral-600"
+              : "bg-neutral-500 dark:bg-neutral-600"
           } ${
             Date.parse(`${day.date}`) === Date.parse(`${TODAY}`) &&
             "outline outline-[1.5px]"
