@@ -4,6 +4,6 @@ export * from "./input";
 export * from "./journals";
 export * from "./mantra";
 export * from "./sections";
-export * from "./tables";
+export * from "./lists";
 export * from "./textarea";
 export * from "./trackers";

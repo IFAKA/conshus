@@ -1,8 +1,8 @@
 import { List, TextArea } from "@/components";
-import { useTables } from "@/hooks";
+import { useLists } from "@/hooks";
 
 const Lists = () => {
-  const { tables, deleteTable, updateTable, addTable } = useTables();
+  const { tables, deleteTable, updateTable, addTable } = useLists();
   return (
     <>
       <List
