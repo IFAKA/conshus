@@ -7,6 +7,7 @@ export * from "./FlowList";
 export * from "./Header";
 export * from "./List";
 export * from "./MantraWord";
+export * from "./MonthSelector";
 export * from "./TextArea";
 export * from "./TextAreaEdit";
 export * from "./TextItem";

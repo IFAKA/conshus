@@ -28,7 +28,10 @@ const TextItem = ({
   const systems = days[idx].systems;
 
   const ref = useClickOutside(id);
-  useHotkeys(";", () => setCursor(-1));
+  useHotkeys(";", () => {
+    ref.current?.blur();
+    setCursor(-1);
+  });
   const handleClick = () => setCursor(id);
 
   useEffect(() => {
@@ -52,7 +55,7 @@ const TextItem = ({
             {section === "trackers" ? (
               <CheckButton i={id} />
             ) : (
-              <CopyButton text={text} />
+              <CopyButton value={text} className="mr-2 bg-transparent" />
             )}
             <EditButton text={text} />
             <DeleteButton onClick={onDelete} />
