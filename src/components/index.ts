@@ -11,5 +11,7 @@ export * from "./MonthSelector";
 export * from "./TextArea";
 export * from "./TextAreaEdit";
 export * from "./TextItem";
+export { default as Tooltip } from "./Tooltip/Tooltip";
 export * from "./TotalMoneyTable";
+export { default as TrackersStats } from "./TrackersStats/TrackersStats";
 export * from "./YearGrid";

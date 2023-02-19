@@ -1,6 +1,6 @@
 import { atomWithStorage } from "jotai/utils";
 import { TODAY } from "../constants";
-import { IDay } from "../models";
+import { IDay } from "@/models";
 
 const firstDayDate = new Date(new Date().getFullYear(), 0, 1);
 const days = [...Array(365).keys()].map((_, i) => ({

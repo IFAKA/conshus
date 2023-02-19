@@ -1,6 +1,6 @@
 import AutosizeInput from "react-input-autosize";
 import { useMantraWord } from "../../hooks";
-import { AutoSizeInputType } from "../../models";
+import { AutoSizeInputType } from "../../models/types";
 
 const MantraWord = () => {
   const {

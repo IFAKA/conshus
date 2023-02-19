@@ -1,11 +1,11 @@
-import { List, TextArea, YearGrid } from "@/components";
+import { List, TextArea, TrackersStats, YearGrid } from "@/components";
 import { useTrackers } from "@/hooks";
 
 const Trackers = () => {
   const { systems, deleteSystem, updateSystem, addSystem } = useTrackers();
   return (
     <>
-      <YearGrid />
+      <TrackersStats />
       <List
         items={systems}
         position="top-left"

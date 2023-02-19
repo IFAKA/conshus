@@ -49,7 +49,7 @@ const MonthSelector = () => {
       </button>
       <CopyButton
         name={months[monthIdx].name}
-        className="border-x-2 border-neutral-900 flex items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px]"
+        className="w-[110px] justify-center border-x-2 dark:border-neutral-900 border-white flex items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px]"
         value={months[monthIdx].total}
       >
         <>

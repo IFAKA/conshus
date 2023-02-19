@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { SectionType } from "../../models";
+import { SectionType } from "../../models/types";
 import { sectionAtom } from "../../store";
 import { MantraWord } from "../MantraWord";
 

@@ -1,6 +1,6 @@
+import { SectionType } from "@/models";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import { SectionType } from "../models";
 
 export const sectionAtom = atomWithStorage(
   "section",
