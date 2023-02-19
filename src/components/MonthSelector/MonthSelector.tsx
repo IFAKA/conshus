@@ -28,24 +28,28 @@ const MonthSelector = () => {
     [budget]
   );
 
-  const handleDecrease = () => monthIdx >= 0 && setMonthIdx((crr) => crr - 1);
+  const handleDecrease = () =>
+    monthIdx > 0
+      ? setMonthIdx((crr) => crr - 1)
+      : setMonthIdx(MONTHS.length - 1);
 
   const handleIncrease = () =>
-    monthIdx <= MONTHS.length - 1 && setMonthIdx((crr) => crr + 1);
+    monthIdx < MONTHS.length - 1
+      ? setMonthIdx((crr) => crr + 1)
+      : setMonthIdx(0);
 
   return (
     <div className="flex">
       <button
         onClick={handleDecrease}
-        disabled={monthIdx <= 0}
-        className="hover:disabled:cursor-default disabled:opacity-75 disabled:hover:bg-neutral-800 flex w-fit items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-2 py-[7px] rounded-l-xl"
+        className="hover:disabled:cursor-default disabled:opacity-50 hover:disabled:bg-neutral-800 disabled:bg-neutral-800 disabled:hover:bg-neutral-800 flex w-fit items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-2 py-[7px] rounded-l-xl"
         aria-label="Previous month"
       >
         <CaretLeft />
       </button>
       <CopyButton
         name={months[monthIdx].name}
-        className="border-x-2 border-neutral-900 flex w-[106px] items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] "
+        className="border-x-2 border-neutral-900 flex items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px]"
         value={months[monthIdx].total}
       >
         <>
@@ -59,7 +63,6 @@ const MonthSelector = () => {
       </CopyButton>
       <button
         onClick={handleIncrease}
-        disabled={monthIdx >= MONTHS.length - 1}
         className="hover:disabled:cursor-default disabled:opacity-75 disabled:hover:bg-neutral-800 flex w-fit items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-2 py-[7px] rounded-r-xl"
         aria-label="Next month"
       >
