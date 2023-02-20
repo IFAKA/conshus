@@ -55,7 +55,7 @@ const MonthSelector = () => {
         <>
           <span className=" font-semibold mr-1">{months[monthIdx].name}:</span>
           <span>
-            {months[monthIdx].total > 0
+            {months[monthIdx].total
               ? compactNumber(months[monthIdx].total)
               : "?"}
           </span>

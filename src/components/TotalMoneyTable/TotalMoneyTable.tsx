@@ -18,7 +18,7 @@ const TotalMoneyTable = () => {
   );
 
   return (
-    <div className="flex justify-between mx-2">
+    <div className="flex justify-between mx-2 mb-2">
       <CopyButton
         className="flex w-fit mr-2 items-center hover:bg-neutral-300 dark:hover:bg-neutral-700 hover:cursor-pointer bg-neutral-200 dark:bg-neutral-800 whitespace-pre-wrap text-lg leading-6 px-[11px] py-[7px] rounded-xl"
         value={total}
