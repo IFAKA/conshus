@@ -72,10 +72,10 @@ const TrackersStats = () => {
         className={`text-lg font-semibold leading-6 px-[11px] py-[7px] rounded-xl ease-in-out duration-150 ${
           today.systems.length > 0 &&
           today.systems.every((system) => system.checked === true)
-            ? "bg-neutral-700 dark:bg-neutral-300 dark:text-neutral-900 text-neutral-300"
+            ? "bg-neutral-700 dark:bg-neutral-300 dark:text-neutral-900 text-white"
             : today.systems.every((system) => system.checked === false)
-            ? "bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-900 text-neutral-300"
-            : "bg-neutral-500 dark:bg-neutral-600 dark:text-neutral-900 text-neutral-300"
+            ? "bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-300"
+            : "bg-neutral-500 dark:bg-neutral-600 dark:text-neutral-300 text-white"
         }`}
       >
         Today
@@ -83,17 +83,17 @@ const TrackersStats = () => {
       <div className="flex items-center">
         <div className="outline outline-1 rounded-xl flex items-center">
           <Tooltip label="Uncompleted days">
-            <div className="text-lg leading-6 px-[11px] py-[7px] rounded-l-xl bg-neutral-300 dark:bg-neutral-800">
+            <div className="text-lg leading-6 px-[11px] py-[7px] rounded-l-xl bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-300">
               {didNothing}
             </div>
           </Tooltip>
           <Tooltip label="Almost completed days">
-            <div className="text-lg  text-neutral-300 leading-6 px-[11px] py-[7px] bg-neutral-500 dark:bg-neutral-600">
+            <div className="text-lg leading-6 px-[11px] py-[7px] bg-neutral-500 dark:bg-neutral-600 dark:text-neutral-300 text-white">
               {missSomething}
             </div>
           </Tooltip>
           <Tooltip label="Completed days">
-            <div className="text-lg leading-6 text-neutral-300 px-[11px] py-[7px] rounded-r-xl dark:text-black bg-neutral-700 dark:bg-neutral-300">
+            <div className="text-lg leading-6 px-[11px] py-[7px] rounded-r-xl bg-neutral-700 dark:bg-neutral-300 dark:text-neutral-900 text-white">
               {completed}
             </div>
           </Tooltip>
