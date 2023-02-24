@@ -34,19 +34,20 @@ const useTrackers = () => {
   };
 
   const addSystem = (value: string) => {
-    const isRepeated = !days.some((day) =>
-      day.systems.some((system) => system.text === value.trim())
+    const todayIdx = days.findIndex(
+      (day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`)
     );
 
-    if (isRepeated) {
+    const isRepeated = days[todayIdx].systems?.some(
+      (system) => system.text.toLowerCase() === value.trim().toLowerCase()
+    );
+
+    if (!isRepeated) {
       let newDays = [...days];
-      const idx = newDays.findIndex(
-        (day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`)
-      );
-      newDays[idx] = {
-        date: newDays[idx].date,
+      newDays[todayIdx] = {
+        date: newDays[todayIdx].date,
         systems: [
-          ...newDays[idx].systems,
+          ...newDays[todayIdx].systems,
           { checked: false, text: value.trim() },
         ],
       };
