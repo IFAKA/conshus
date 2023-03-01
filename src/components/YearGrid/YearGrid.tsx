@@ -1,3 +1,4 @@
+import { getXTimesNumber } from "@/utils";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { TODAY } from "../../constants";
@@ -17,7 +18,7 @@ const YearGrid = () => {
       const dayBeforeIdx = idx - 1;
       const newSystems = newDays[dayBeforeIdx].systems.map((system) => ({
         text: system.text,
-        checked: false,
+        times: getXTimesNumber(system.text),
       }));
       newDays[idx] = {
         date: newDays[idx].date,
@@ -34,9 +35,11 @@ const YearGrid = () => {
           key={i}
           className={`sm:p-[5px] p-1 m-[1px] ${
             day.systems.length > 0 &&
-            day.systems.every((system) => system.checked === true)
+            day.systems.every((system) => system.times === 0)
               ? "bg-neutral-700 dark:bg-neutral-300"
-              : day.systems.every((system) => system.checked === false)
+              : day.systems.every(
+                  (system) => system.times === getXTimesNumber(system.text)
+                )
               ? "bg-neutral-300 dark:bg-neutral-800"
               : "bg-neutral-500 dark:bg-neutral-600"
           } ${

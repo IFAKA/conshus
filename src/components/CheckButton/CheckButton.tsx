@@ -4,7 +4,13 @@ import { useState } from "react";
 import { TODAY } from "../../constants";
 import { cursorAtom, daysAtom } from "../../store";
 
-const CheckButton = ({ i }: { i: number }) => {
+const CounterCheckButton = ({
+  totalTimes,
+  i,
+}: {
+  totalTimes: number;
+  i: number;
+}) => {
   const [days, setDays] = useAtom(daysAtom);
   const [, setCursor] = useAtom(cursorAtom);
   const [updating, setUpdating] = useState(false);
@@ -15,16 +21,18 @@ const CheckButton = ({ i }: { i: number }) => {
   const systems = days[idx].systems;
 
   const updateDay = () => {
-    let newDays = [...days];
-    let newSystem = [...systems];
+    if (systems[i].times > 0) {
+      let newDays = [...days];
+      let newSystem = [...systems];
 
-    newSystem[i] = { text: systems[i].text, checked: !systems[i].checked };
-    newDays[idx] = {
-      date: newDays[idx].date,
-      systems: newSystem,
-    };
+      newSystem[i] = { text: systems[i].text, times: systems[i].times - 1 };
+      newDays[idx] = {
+        date: newDays[idx].date,
+        systems: newSystem,
+      };
 
-    setDays(newDays);
+      setDays(newDays);
+    }
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -39,12 +47,22 @@ const CheckButton = ({ i }: { i: number }) => {
   return (
     <button
       className="mr-2 bg-transparent"
-      disabled={updating}
+      disabled={updating || !(systems[i].times > 0)}
       onClick={handleClick}
     >
-      {systems[i].checked ? <CheckSquare /> : <Square />}
+      {systems[i].times ? (
+        totalTimes > 1 ? (
+          <div className="border text-sm pt-[1px] hover:bg-neutral-800 rounded h-[18px] w-[18px] flex items-center justify-center">
+            {totalTimes - systems[i].times}
+          </div>
+        ) : (
+          <Square />
+        )
+      ) : (
+        <CheckSquare />
+      )}
     </button>
   );
 };
 
-export default CheckButton;
+export default CounterCheckButton;

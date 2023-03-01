@@ -1,5 +1,6 @@
 import { TODAY } from "@/constants";
-import { cursorAtom, daysAtom, textAreaAtom } from "@/store";
+import { cursorAtom, daysAtom } from "@/store";
+import { getXTimesNumber } from "@/utils";
 import { useAtom } from "jotai";
 
 const useTrackers = () => {
@@ -21,11 +22,12 @@ const useTrackers = () => {
   };
 
   const updateSystem = (value: string) => {
+    const times = getXTimesNumber(value);
     let newSystems = [...systems];
     let newDays = [...days];
 
     newSystems[cursor] = {
-      checked: newSystems[cursor].checked,
+      times: newSystems[cursor].times >= times ? 0 : newSystems[cursor].times,
       text: value.trim(),
     };
     newDays[idx] = { date: newDays[idx].date, systems: newSystems };
@@ -34,26 +36,26 @@ const useTrackers = () => {
   };
 
   const addSystem = (value: string) => {
+    const text = value.trim();
     const todayIdx = days.findIndex(
       (day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`)
     );
 
     const isRepeated = days[todayIdx].systems?.some(
-      (system) => system.text.toLowerCase() === value.trim().toLowerCase()
+      (system) => system.text.toLowerCase() === text.toLowerCase()
     );
 
     if (!isRepeated) {
+      const times = getXTimesNumber(text);
       let newDays = [...days];
       newDays[todayIdx] = {
         date: newDays[todayIdx].date,
-        systems: [
-          ...newDays[todayIdx].systems,
-          { checked: false, text: value.trim() },
-        ],
+        systems: [...newDays[todayIdx].systems, { text, times }],
       };
       setDays(newDays);
     }
   };
+
   return { systems, deleteSystem, updateSystem, addSystem };
 };
 

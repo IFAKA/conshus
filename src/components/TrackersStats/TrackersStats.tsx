@@ -1,4 +1,4 @@
-import { initDay } from "@/models";
+import { getXTimesNumber } from "@/utils";
 import { useAtom } from "jotai";
 import { useEffect, useMemo } from "react";
 import { TODAY } from "../../constants";
@@ -9,39 +9,41 @@ const TrackersStats = () => {
   const [days, setDays] = useAtom(daysAtom);
   const [tomorrow, setTomorrow] = useAtom(tomorrowAtom);
 
-  const today = useMemo(
+  const todaySystems = useMemo(
     () =>
-      days.find(
-        (day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`)
-      ) || initDay,
+      days.find((day) => Date.parse(`${day.date}`) === Date.parse(`${TODAY}`))
+        ?.systems || [],
     [days]
   );
 
   const completed = useMemo(
     () =>
       days.filter(
-        (day) =>
-          day.systems.length > 0 &&
-          day.systems.every((system) => system.checked === true)
+        ({ systems }) =>
+          systems.length > 0 && systems.every((system) => system.times === 0)
       ).length || 0,
     [days]
   );
   const missSomething = useMemo(
     () =>
       days.filter(
-        (day) =>
-          day.systems.length > 0 &&
-          !day.systems.every((system) => system.checked === true) &&
-          !day.systems.every((system) => system.checked === false)
+        ({ systems }) =>
+          systems.length > 0 &&
+          !systems.every((system) => system.times === 0) &&
+          !systems.every(
+            (system) => system.times === getXTimesNumber(system.text)
+          )
       ).length || 0,
     [days]
   );
   const didNothing = useMemo(
     () =>
       days.filter(
-        (day) =>
-          day.systems.length > 0 &&
-          day.systems.every((system) => system.checked === false)
+        ({ systems }) =>
+          systems.length > 0 &&
+          systems.every(
+            (system) => system.times === getXTimesNumber(system.text)
+          )
       ).length || 0,
     [days]
   );
@@ -56,7 +58,7 @@ const TrackersStats = () => {
       const dayBeforeIdx = idx - 1;
       const newSystems = newDays[dayBeforeIdx].systems.map((system) => ({
         text: system.text,
-        checked: false,
+        times: getXTimesNumber(system.text),
       }));
       newDays[idx] = {
         date: newDays[idx].date,
@@ -70,10 +72,12 @@ const TrackersStats = () => {
     <div className="flex justify-between mx-2 mb-2">
       <h3
         className={`text-lg font-semibold leading-6 px-[11px] py-[7px] rounded-xl ease-in-out duration-150 ${
-          today.systems.length > 0 &&
-          today.systems.every((system) => system.checked === true)
+          todaySystems.length > 0 &&
+          todaySystems.every((system) => system.times === 0)
             ? "bg-neutral-700 dark:bg-neutral-300 dark:text-neutral-900 text-white"
-            : today.systems.every((system) => system.checked === false)
+            : todaySystems.every(
+                (system) => system.times === getXTimesNumber(system.text)
+              )
             ? "bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-300"
             : "bg-neutral-500 dark:bg-neutral-600 dark:text-neutral-300 text-white"
         }`}
