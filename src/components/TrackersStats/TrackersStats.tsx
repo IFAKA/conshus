@@ -76,10 +76,13 @@ const TrackersStats = () => {
           todaySystems.every((system) => system.times === 0)
             ? "bg-neutral-700 dark:bg-neutral-300 dark:text-neutral-900 text-white"
             : todaySystems.every(
-                (system) => system.times === getXTimesNumber(system.text)
+                (system) =>
+                  system.times <= getXTimesNumber(system.text) &&
+                  system.times !== 0
               )
             ? "bg-neutral-300 dark:bg-neutral-800 dark:text-neutral-300"
-            : "bg-neutral-500 dark:bg-neutral-600 dark:text-neutral-300 text-white"
+            : todaySystems.some((system) => system.times === 0) &&
+              "bg-neutral-500 dark:bg-neutral-600 dark:text-neutral-300 text-white"
         }`}
       >
         Today

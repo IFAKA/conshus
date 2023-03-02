@@ -27,7 +27,7 @@ const useTrackers = () => {
     let newDays = [...days];
 
     newSystems[cursor] = {
-      times: newSystems[cursor].times >= times ? 0 : newSystems[cursor].times,
+      times: newSystems[cursor].times <= times ? times : 1,
       text: value.trim(),
     };
     newDays[idx] = { date: newDays[idx].date, systems: newSystems };
