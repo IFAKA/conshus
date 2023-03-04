@@ -52,7 +52,7 @@ const CounterCheckButton = ({
     >
       {systems[i].times ? (
         totalTimes > 1 ? (
-          <div className="border text-sm pt-[1px] hover:bg-neutral-800 rounded h-[18px] w-[18px] flex items-center justify-center">
+          <div className="border dark:border-white border-black text-sm pt-[1px] dark:hover:bg-neutral-800 hover:bg-neutral-200 rounded h-[18px] w-[18px] flex items-center justify-center">
             {totalTimes - systems[i].times}
           </div>
         ) : (

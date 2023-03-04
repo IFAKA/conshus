@@ -5,6 +5,5 @@ export interface IDay {
 
 export interface ISystem {
   text: string;
-  checked?: boolean;
   times: number;
 }
