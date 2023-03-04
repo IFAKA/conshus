@@ -18,8 +18,12 @@ const useLists = () => {
   };
 
   const addTable = (value: string) => {
-    if (!lists.some((table) => table.text === value.trim())) {
-      setLists((crr) => [...crr, { items: [], text: value.trim() }]);
+    if (
+      !lists.some(
+        (table) => table.text.toLowerCase() === value.trim().toLowerCase()
+      )
+    ) {
+      setLists((crr) => [{ items: [], text: value.trim() }, ...crr]);
     }
   };
 

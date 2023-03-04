@@ -7,7 +7,7 @@ const Lists = () => {
     <>
       <List
         items={tables}
-        position="top-left"
+        position="bottom-left"
         onDelete={deleteTable}
         onUpdate={updateTable}
       />
